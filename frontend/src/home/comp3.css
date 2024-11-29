@@ -1,0 +1,59 @@
+.comp3{
+    padding: 0 20px 120px 20px;
+
+}
+
+.mainDiv1{
+    display: flex;
+    
+    margin-left: 13%;
+   
+}
+
+.info3{
+    width: 27rem;
+    height: 8.75rem;
+    
+}
+
+.subImg1{
+    display : flex;
+    width: 11.625rem;
+    height: 6rem;
+    
+}
+
+.subImg2{
+    display : flex;
+    width: 14.75rem;
+    height: 6rem;
+  
+}
+
+.subImg3{
+    display : flex;
+    width: 11.625rem;
+    height: 6rem;
+    
+}
+
+.subImg1 img,.subImg2 img,.subImg3 img{
+    height: 88.7px;
+    width: 120px;
+    align-self: end;
+}
+
+.subImg1 p,.subImg2 p,.subImg3 p{
+    font-size: 0.75rem;
+    align-self: end;
+    opacity: 0.7;
+}
+
+.info3 p{
+    margin: 16px 0 15px 0;
+}
+
+.pricingAnchor{
+    margin-left: 13%;
+    font-size: 1rem;
+}

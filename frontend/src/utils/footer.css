@@ -1,0 +1,55 @@
+.footer{
+    margin-bottom: -10px;
+    
+    width: 100%;
+    height: 27rem;
+    background-color: #FBFBFB;
+    padding: 30px 0 5px 0;
+}
+
+.media{
+    display: flex;
+    
+    margin-left : 13%;
+    height: 334px;
+    width: 1100px;
+}
+
+.media div{
+    width: 242px;
+    height: 334px;
+    
+}
+
+.social{
+    list-style-type: none;
+    display: flex;
+    padding-left: 0 !important;
+    margin-top: 20px;
+}
+
+.social i{
+    margin-right: 25px;
+    font-size:1.25rem;
+    opacity: 0.7;
+}
+
+.company-list{
+    list-style-type: none;
+    padding-left: 0 !important;
+    margin-top: 10px;
+}
+
+.company-list li{
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.policy{
+    width: 1100px;
+    height: 350px;
+    background-color: aqua;
+    margin-left: 13%;
+
+
+}

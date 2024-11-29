@@ -1,0 +1,27 @@
+.sign-main-up{
+    width: 100%;
+    height: 29rem;
+    margin: 9rem 0 9rem 0;
+}
+
+.sign-up{
+    
+    display: flex;
+    
+    justify-content: center;
+    
+    
+} 
+
+.sign-img img{
+    height: 22.5rem;
+    width: 33.75rem;
+    /* background-color: pink; */
+}
+
+.sign-info{
+    height: 20.125rem;
+    width: 18.125rem;
+    
+    margin-left: 4rem;
+}
