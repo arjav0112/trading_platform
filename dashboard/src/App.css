@@ -671,12 +671,12 @@ hr {
 
 .list {
   list-style-type: none;
-  padding-bottom: 12%;
+  padding-bottom: 6%;
 }
 
 .list li {
   border-bottom: 0.8px solid rgb(235, 234, 234);
-  padding: 12px 10px 12px 14px;
+  padding: 6px 15px 6px 6px;
   position: relative;
 }
 
@@ -792,10 +792,12 @@ hr {
 }
 
 .down {
+  font-weight: 600;
   color: rgb(223, 73, 73);
 }
 
 .up {
+  font-weight: 600;
   color: rgb(103, 201, 136);
 }
 
