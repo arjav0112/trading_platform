@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React,{ useEffect, useState } from "react";
 import {Tooltip , Grow} from "@mui/material";
 import {KeyboardArrowDown,KeyboardArrowUp} from "@mui/icons-material";
 import Watchlistactions from "./Watchlistaction";
@@ -7,7 +7,7 @@ import Watchlistactions from "./Watchlistaction";
 export default function WatchlistItems({stock}){
     const [watchlistactions,setwatchlistactions] = useState(false);
     // console.log(watchlistactions)
-
+    
     let handleMouseEnter = (e)=>{
         
         setwatchlistactions(true);
