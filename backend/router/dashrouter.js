@@ -10,8 +10,8 @@ router.route("/")
 router.route("/watchlist")
 .get(dashcontroller.watchlist)
 
-router.route("/product")
-.get(dashcontroller.product)
+router.route("/position")
+.get(dashcontroller.position)
 
 router.route("/holding")
 .get(dashcontroller.holding)
