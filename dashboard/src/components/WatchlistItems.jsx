@@ -4,7 +4,7 @@ import {KeyboardArrowDown,KeyboardArrowUp} from "@mui/icons-material";
 import Watchlistactions from "./Watchlistaction";
 
 
-export default function WatchlistItems({stock}){
+export default function WatchlistItems({stock,changebuyStock}){
     const [watchlistactions,setwatchlistactions] = useState(false);
     // console.log(watchlistactions)
     
@@ -16,6 +16,7 @@ export default function WatchlistItems({stock}){
     let handleMouseLeave = (e)=>{
         setwatchlistactions(false);
     }
+    // console.log(stock.name)
     return(
         <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="item">
@@ -26,7 +27,7 @@ export default function WatchlistItems({stock}){
                     <span className="price">{stock.price}</span>
                 </div>
             </div>
-            {watchlistactions && <Watchlistactions uid={stock.name}/>}
+            {watchlistactions && <Watchlistactions uid={stock.name} changebuyStock={changebuyStock}/>}
 
         </li>
     )

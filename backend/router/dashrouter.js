@@ -16,4 +16,10 @@ router.route("/position")
 router.route("/holding")
 .get(dashcontroller.holding)
 
+router.route("/holding/buy")
+.post(dashcontroller.addholding)
+
+router.route("/fetchdata")
+.post(dashcontroller.fetchdata)
+
 module.exports= router;

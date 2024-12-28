@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 app.use("/dashboard",dashrouter);
 
 app.get("/",(req,res)=>{
-    res.send("pokemon")
+    res.send("hello")
 })
 
 app.listen("8080",()=>{
