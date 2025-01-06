@@ -28,5 +28,19 @@ router.route("/fetchdata")
 router.route("/tempholding")
 .get(dashcontroller.newholdings)
 
+router.route("/orders")
+.get(dashcontroller.orders)
+
+router.route("/resolved")
+.post(dashcontroller.resolved)
+
+router.route("/cancelled")
+.post(dashcontroller.cancelled)
+
+router.route("/rejected")
+.post(dashcontroller.rejected)
+
+router.route("/exorders")
+.get(dashcontroller.exorders)
 
 module.exports= router;

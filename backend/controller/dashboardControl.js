@@ -1,6 +1,7 @@
 const Watchlist = require("../models/watchlist")
 const Holding = require("../models/holdings")
 const Order = require("../models/orders")
+const Exorder = require("../models/ExecutedOrder")
 const data = require("../data/data")
 
 module.exports.watchlist = async (req,res)=>{
@@ -22,12 +23,18 @@ module.exports.addholding = async (req,res)=>{
     res.send(true)
 }
 module.exports.newOrder = async (req,res) =>{
-    console.log("hello")
+    // console.log("hello")
     // console.log(req.body)
+    
     let order = new Order({name : req.body.name, qty : req.body.qty, price : req.body.price, mode: req.body.mode})
     order.save()
     // console.log(order)
-    res.send(true)
+    if(order.mode === "BUY"){
+        res.send(true)
+    }else{
+        res.send(false)
+    }
+
 }
 
 module.exports.fetchdata = async (req,res)=>{
@@ -52,6 +59,38 @@ module.exports.newholdings = async (req,res)=>{
     res.send(true)
 }
 
+module.exports.resolved = async (req,res)=>{
+    
+    // console.log(req.body)
+    let completedOrder = new Exorder({name : req.body.name, qty : req.body.qty, price : req.body.price, mode: req.body.mode,status : "completed"})
+    await completedOrder.save()
+    let neworder = new Holding({name : req.body.name , qty : req.body.qty , avg : req.body.price , price : req.body.price ,net : "+10.0%",day : "-10.0%"  })
+    await neworder.save()
+    res.send(true) 
+    
+}
+
+module.exports.cancelled = async (req,res)=>{
+    let cancelledOrder = new Exorder({name : req.body.name, qty : req.body.qty, price : req.body.price, mode: req.body.mode})
+    await cancelledOrder.save()
+    res.send(true)
+}
+
+module.exports.rejected = async (req,res)=>{
+    let rejectedOrder = new Exorder({name : req.body.name, qty : req.body.qty, price : req.body.price, mode: req.body.mode})
+    await rejectedOrder.save()
+    res.send(true)
+}
+
+module.exports.orders = async (req,res)=>{
+    let neworders = await Order.find({})
+    res.send(neworders)
+}
+
+module.exports.exorders = async (req,res)=>{
+    let newexorders = await Exorder.find({})
+    res.send(newexorders)
+}
 
 module.exports.position = async (req,res)=>{
     res.send("position")

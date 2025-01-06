@@ -846,5 +846,52 @@ hr {
   background-color: rgb(212, 212, 212);
 }
 
+/* orders buy and sell */
 
+.buyclass {
+  background-color: #E6EDF9;
+  color: #508EF4;
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding : 0.2rem 0.5rem 0.2rem 0.7rem;
+  border: 0.7px solid #4184f3;
+}
 
+.sellclass {
+  background-color: #fceded;
+  color: #e26460;
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding : 0.2rem 0.5rem 0.2rem 0.7rem;
+  border: 0.7px solid #ff5722;
+}
+
+.actionclass {
+  background-color: #ececec;
+  color : #5f5f5f;
+  padding : 0.2rem 1rem 0.2rem 1rem;
+  border: 0.7px solid #5f5f5f;
+}
+
+.completeclass {
+  background-color:  #edf7ed;
+  color : #6ebe71;
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding : 0.2rem 1rem 0.2rem 1rem;
+  border: 0.7px solid #6ebe71;
+}
+
+.rejectedclass{
+  background-color:  #fceded;
+  color : #e57571;
+  padding : 0.2rem 1rem 0.2rem 1rem;
+  border: 0.7px solid #e57571;
+} 
+
+.cancelledclass{
+  background-color: #ececec;
+  color : #5f5f5f;
+  padding : 0.2rem 1rem 0.2rem 1rem;
+  border: 0.7px solid #5f5f5f;
+}

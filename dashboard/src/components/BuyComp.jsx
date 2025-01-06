@@ -31,7 +31,19 @@ export default function BuyComp({ baseData , sendbasedata }){
 
              let ans = await result.json()
              sendbasedata({data: "", mode: 3})
-             console.log(ans)
+             if(ans){
+              let response = await fetch('http://localhost:8080/dashboard/resolved',{
+                method: 'POST', 
+                headers: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                body: urlEncodednewOrder.toString()
+              })
+              let jsonresponse = await response.json()
+              console.log(jsonresponse)
+             }else{
+               console.log(ans)
+             }
             
         } catch(err){
             throw err
