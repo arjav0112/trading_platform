@@ -1,10 +1,36 @@
-import React,{useState} from "react";
+import React,{useState , useEffect} from "react";
 import { holdings } from "../data/data";
+
 
 export default function Holdings(){
   let [totalcurrval,settotalcurrval] = useState(0);
   let [totalprofit,settotalprofit] = useState(0);
+  let [holdings,setholdings] = useState(null)
+  let [loading,setloading] = useState(true)
+  let [error,seterror] = useState(null)
   
+    useEffect(()=>{
+      
+      const fetchdata = async ()=>{
+      try{
+      let response = await fetch("http://localhost:8080/dashboard/holding")
+      console.log(response);
+      if(!response.ok){
+        throw err;
+      }
+      const result = await response.json()
+      setholdings(result)
+      } catch(err){
+        seterror(err.message)
+      }   finally {
+        setloading(false);
+      }
+    };
+    fetchdata();
+    },[])
+  
+    if(loading) return <p>Loading...</p>
+    if(error) return <p>Error : {error}</p>
   
   return (
     <>
@@ -12,6 +38,7 @@ export default function Holdings(){
 
       <div className="order-table">
         <table>
+          <thead>
           <tr>
             <th>Instrument</th>
             <th>Qty.</th>
@@ -22,6 +49,7 @@ export default function Holdings(){
             <th>Net chg.</th>
             <th>Day chg.</th>
           </tr>
+          </thead>
 
           {holdings.map((stock,index) => {
             let currval = stock.qty * stock.price
@@ -33,8 +61,8 @@ export default function Holdings(){
 
 
             return(
-
-            <tr key={index}>
+            <tbody key={index}>
+            <tr>
               <td>{stock.name}</td>
               <td>{stock.qty}</td>
               <td>{stock.avg.toFixed(2)}</td>
@@ -44,6 +72,7 @@ export default function Holdings(){
               <td className={profitclass}>{stock.net}</td>
               <td className={dayclass}>{stock.day}</td>
             </tr>
+            </tbody>
             )
           })}
           

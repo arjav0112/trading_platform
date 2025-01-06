@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const holdingSchema  = new Schema({
+const orderSchema  = new Schema({
     name : {
         type: String,
         required: true,
@@ -10,22 +10,14 @@ const holdingSchema  = new Schema({
         type: Number,
         required: true,
     },
-    avg : {
-        type: Number,
-        required: true,
-    },
     price : {
         type: Number,
         required: true,
     },
-    net : {
-        type: String,
-        required: true,
-    },
-    day : {
+    mode : {
         type: String,
         required: true,
     },
 });
 
-module.exports = mongoose.model("Holding",holdingSchema);
+module.exports = mongoose.model("Order",orderSchema);

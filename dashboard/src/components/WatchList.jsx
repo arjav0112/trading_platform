@@ -3,13 +3,13 @@ import {Tooltip , Grow} from "@mui/material";
 // import { watchlist } from "../data/data";
 import WatchlistItems from "./WatchlistItems";
  
-export default function WatchList({changebuyStock}){
+export default function WatchList({sendbasedata}){
   let [watchlist,setwatchlist] = useState(null)
   let [loading,setloading] = useState(true)
   let [error,seterror] = useState(null)
 
   useEffect(()=>{
-    changebuyStock(0);
+    // changebuyStock(0);
     const fetchdata = async ()=>{
     try{
     let response = await fetch("http://localhost:8080/dashboard/watchlist")
@@ -34,11 +34,10 @@ export default function WatchList({changebuyStock}){
   return (
     <div className="watchlist-container">
       <div className="search-container">
-        <input
-          type="text"
+        <div
+        
           name="search"
           id="search"
-          placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
           className="search"
         />
         <span className="counts"> {watchlist.length} / 50</span>
@@ -47,7 +46,7 @@ export default function WatchList({changebuyStock}){
       <ul className="list">
         {watchlist.map((stock, index)=>{
           return(
-            <WatchlistItems stock={stock} changebuyStock={changebuyStock} key= {index} />
+            <WatchlistItems stock={stock} sendbasedata={sendbasedata} key= {index} />
 
           )
         })}

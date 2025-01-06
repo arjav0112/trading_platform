@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./BuyComp.css";
 
-export default function BuyComp({ baseData , sendbasedata }){
+export default function SellComp({ baseData , sendbasedata }){
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(baseData.price);
 
@@ -10,10 +10,10 @@ export default function BuyComp({ baseData , sendbasedata }){
     name : baseData.name,
     qty : stockQuantity,
     price : stockPrice,
-    mode : "BUY"
+    mode : "SELL"
   }
 
-  const handleBuyClick = async () => {
+  const handlesellClick = async () => {
     try{
         
             const urlEncodednewOrder = new URLSearchParams();
@@ -76,8 +76,8 @@ export default function BuyComp({ baseData , sendbasedata }){
       <div className="buttons">
         <span>Margin required ₹140.65</span>
         <div>
-          <button className="btn btn-blue" onClick={handleBuyClick}>
-            Buy
+          <button className="btn btn-red" onClick={handlesellClick}>
+            Sell
           </button>
           <Link className="btn btn-grey" onClick={handleCancelClick}>
             Cancel

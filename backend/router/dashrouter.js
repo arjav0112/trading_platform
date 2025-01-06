@@ -16,10 +16,17 @@ router.route("/position")
 router.route("/holding")
 .get(dashcontroller.holding)
 
+router.route("/newOrder")
+.post(dashcontroller.newOrder)
+
 router.route("/holding/buy")
 .post(dashcontroller.addholding)
 
 router.route("/fetchdata")
 .post(dashcontroller.fetchdata)
+
+router.route("/tempholding")
+.get(dashcontroller.newholdings)
+
 
 module.exports= router;

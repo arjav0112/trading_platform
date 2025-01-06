@@ -1,5 +1,6 @@
 const Watchlist = require("../models/watchlist")
 const Holding = require("../models/holdings")
+const Order = require("../models/orders")
 const data = require("../data/data")
 
 module.exports.watchlist = async (req,res)=>{
@@ -20,6 +21,14 @@ module.exports.addholding = async (req,res)=>{
 
     res.send(true)
 }
+module.exports.newOrder = async (req,res) =>{
+    console.log("hello")
+    // console.log(req.body)
+    let order = new Order({name : req.body.name, qty : req.body.qty, price : req.body.price, mode: req.body.mode})
+    order.save()
+    // console.log(order)
+    res.send(true)
+}
 
 module.exports.fetchdata = async (req,res)=>{
     // console.log(req.body)
@@ -31,10 +40,24 @@ module.exports.fetchdata = async (req,res)=>{
     res.send(basedata[0])
 }
 
+module.exports.newholdings = async (req,res)=>{
+    let newlist;
+    // console.log(data);
+    for(let val in data){
+
+        newlist = new Holding({name: data[val].name,qty: data[val].qty, avg : data[val].avg,price : data[val].price,net : data[val].net , day : data[val].day})
+        await newlist.save()
+    }
+    console.log("data saved")
+    res.send(true)
+}
+
+
 module.exports.position = async (req,res)=>{
     res.send("position")
 }
 
 module.exports.holding = async (req,res)=>{
-    res.send("holding")
+    let newholding = await Holding.find({})
+    res.send(newholding)
 }

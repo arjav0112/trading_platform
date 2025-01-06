@@ -192,4 +192,4 @@ const positions = [
   },
 ];
 
-module.exports = watchlist;
+module.exports = holdings;
