@@ -18,7 +18,7 @@ export default function Orders(){
         throw err;
       }
       const result = await response.json()
-      console.log(result)
+      // console.log(result)
       setorders(result)
 
       let response1 = await fetch("http://localhost:8080/dashboard/exorders")
@@ -41,9 +41,30 @@ export default function Orders(){
     if(loading) return <p>Loading...</p>
     if(error) return <p>Error : {error}</p>
 
+    let handleRemoveOrder = async (stock)=>{
+
+      const urlEncodedcancelOrder = new URLSearchParams();
+      for (let key in stock) {
+        urlEncodedcancelOrder.append(key, stock[key]);
+      }
+      
+      let result = await fetch('http://localhost:8080/dashboard/cancelled',{
+          method: 'POST', 
+          headers: {
+              'content-type': 'application/x-www-form-urlencoded'
+          },
+          body: urlEncodedcancelOrder.toString()
+        })
+
+       let ans = await result.json()
+       console.log(ans)
+
+
+    }
+
   return (
     <div className="orders">
-      {!(orders.length > 0) ? 
+      {!((orders.length > 0) || (exorders.length > 0)) ? 
       <div className="no-orders">
         <p>You haven't placed any orders today</p>
 
@@ -57,6 +78,7 @@ export default function Orders(){
         <table style={{width : "100%"}}>
           <thead>
           <tr>
+            <th style={{width : "4%"}}></th>
             <th style={{width : "7%"}}>Type</th>
             <th>Instrument</th>
             <th>Qty.</th>
@@ -69,10 +91,12 @@ export default function Orders(){
           {orders.map((stock,index) => {
 
             let buyclass = stock.mode == "BUY" ? "buyclass" : "sellclass"
+
             
             return(
             <tbody key={index}>
             <tr>
+              <td><button style={{background: "white",border: "none"}} onClick={()=>handleRemoveOrder(stock)}><i className="fa-solid fa-x"></i></button></td>
               <td><div className={buyclass}>{stock.mode}</div></td>
               <td>{stock.name}</td>
               <td>{stock.qty}</td>

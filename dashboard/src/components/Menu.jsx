@@ -15,7 +15,7 @@ export default function Menu(){
 
   let menuclass = "menu"
   let activemenuclass = "menu selected"
-  console.log(selectedmenu,isdropdown)
+  // console.log(selectedmenu,isdropdown)
   return (
     <div className="menu-container">
       <img src="logo.png" style={{ width: "50px" }} />

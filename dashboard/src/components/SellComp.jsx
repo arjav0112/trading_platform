@@ -5,13 +5,15 @@ import "./BuyComp.css";
 export default function SellComp({ baseData , sendbasedata }){
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(baseData.price);
-
+  // const [sellData, setsellData] = useState({})
   let newOrder = {
     name : baseData.name,
     qty : stockQuantity,
     price : stockPrice,
     mode : "SELL"
   }
+
+ 
 
   const handlesellClick = async () => {
     try{
@@ -29,16 +31,51 @@ export default function SellComp({ baseData , sendbasedata }){
                 body: urlEncodednewOrder.toString()
               })
 
-             let ans = await result.json()
-             sendbasedata({data: "", mode: 3})
-             console.log(ans)
-            
+             
+              sendbasedata({data: "", mode: 3})
+              let ans = await result.json()
+            //  setsellData(ans)
+            //  console.log(sellOrder)
+            if(ans){
+              let sellOrder = {
+                id : ans._id,
+                name : ans.name,
+                qty : ans.qty,
+                price : ans.price,
+                mode : "SELL"
+              }
+              // console.log(sellOrder)
+              const urlEncodedsellOrder = new URLSearchParams();
+              for (let key in sellOrder) {
+                 urlEncodedsellOrder.append(key, sellOrder[key]);
+              }
+
+              let response = await fetch('http://localhost:8080/dashboard/resolved',{
+                method: 'POST', 
+                headers: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                body: urlEncodedsellOrder.toString()
+              })
+              let jsonresponse = await response.json()
+              console.log(jsonresponse)
+            //  console.log(sellOrder)
+            }
+            else{
+             let response = await fetch('http://localhost:8080/dashboard/rejected',{
+               method: 'POST', 
+               headers: {
+                 'content-type': 'application/x-www-form-urlencoded'
+               },
+               body: urlEncodednewOrder.toString()
+             })
+             let jsonresponse = await response.json()
+             console.log(jsonresponse)
+
+           }
         } catch(err){
             throw err
         }
-
- 
-
   };
 
   const handleCancelClick = () => {

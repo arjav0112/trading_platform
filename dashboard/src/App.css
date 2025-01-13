@@ -884,6 +884,8 @@ hr {
 
 .rejectedclass{
   background-color:  #fceded;
+  font-weight: 400;
+  font-size: 0.9rem;
   color : #e57571;
   padding : 0.2rem 1rem 0.2rem 1rem;
   border: 0.7px solid #e57571;
@@ -891,6 +893,8 @@ hr {
 
 .cancelledclass{
   background-color: #ececec;
+  font-weight: 400;
+  font-size: 1rem;
   color : #5f5f5f;
   padding : 0.2rem 1rem 0.2rem 1rem;
   border: 0.7px solid #5f5f5f;

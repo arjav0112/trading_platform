@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const dashcontroller = require("../controller/dashboardControl")
+const wrapAsync = require("../utils/wrapAsync.js")
 
 router.route("/")
 .get((req,res)=>{
@@ -8,39 +9,36 @@ router.route("/")
 })
 
 router.route("/watchlist")
-.get(dashcontroller.watchlist)
+.get(wrapAsync(dashcontroller.watchlist))
 
 router.route("/position")
-.get(dashcontroller.position)
+.get(wrapAsync(dashcontroller.position))
 
 router.route("/holding")
-.get(dashcontroller.holding)
+.get(wrapAsync(dashcontroller.holding))
 
 router.route("/newOrder")
-.post(dashcontroller.newOrder)
+.post(wrapAsync(dashcontroller.newOrder))
 
 router.route("/holding/buy")
-.post(dashcontroller.addholding)
+.post(wrapAsync(dashcontroller.addholding))
 
 router.route("/fetchdata")
-.post(dashcontroller.fetchdata)
-
-router.route("/tempholding")
-.get(dashcontroller.newholdings)
+.post(wrapAsync(dashcontroller.fetchdata))
 
 router.route("/orders")
-.get(dashcontroller.orders)
+.get(wrapAsync(dashcontroller.orders))
 
 router.route("/resolved")
-.post(dashcontroller.resolved)
+.post(wrapAsync(dashcontroller.resolved))
 
 router.route("/cancelled")
-.post(dashcontroller.cancelled)
+.post(wrapAsync(dashcontroller.cancelled))
 
 router.route("/rejected")
-.post(dashcontroller.rejected)
+.post(wrapAsync(dashcontroller.rejected))
 
 router.route("/exorders")
-.get(dashcontroller.exorders)
+.get(wrapAsync(dashcontroller.exorders))
 
 module.exports= router;
