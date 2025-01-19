@@ -1,9 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import Apps from "./Apps";
 import Funds from "./Funds";
 import Holdings from "./Holdings";
+
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { ToastContainer, toast } from "react-toastify";
 
 import Orders from "./Orders";
 import Positions from "./Positions";
@@ -12,11 +16,13 @@ import WatchList from "./WatchList";
 import BuyComp from "./BuyComp";
 import SellComp from "./SellComp";
 
-export default function Dashboard(){
+export default function Dashboard({username}){
 
   const [buyStock,setbuyStock] = useState(false)
   const [sellStock,setsellStock] = useState(false)
   const [baseData,setbaseData] = useState("")
+  
+
 
   let sendbasedata = (value)=>{
     // console.log("packet_data_recivied")
@@ -49,7 +55,7 @@ export default function Dashboard(){
       {/* </GeneralContextProvider> */}
       <div className="content">
         <Routes>
-          <Route exact path="/" element={<Summary />} />
+          <Route exact path="/" element={<Summary username={username}/>} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/holdings" element={<Holdings />} />
           <Route path="/positions" element={<Positions />} />
@@ -57,6 +63,7 @@ export default function Dashboard(){
           <Route path="/apps" element={<Apps />} />
         </Routes>
       </div>
+      <ToastContainer />
     </div>
   );
 };

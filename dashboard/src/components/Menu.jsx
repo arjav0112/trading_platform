@@ -1,9 +1,15 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
-export default function Menu(){
+
+export default function Menu({username,token}){
   let [selectedmenu,setselectedmenu] = useState(0);
   let [isdropdown,setisdropdown] = useState(false);
+  const [inputtoken, setinputtoken] = useState({
+          token: `${token}`
+    })
+  
 
   let handlemenu = (val) => {
     setselectedmenu(val)
@@ -11,6 +17,42 @@ export default function Menu(){
 
   let handledropdown = (val) =>{
     setisdropdown(!val);
+  }
+
+  let handlelogout = async () =>{
+    const urlEncodedinputtoken = new URLSearchParams();
+    for (let key in inputtoken) {
+        urlEncodedinputtoken.append(key, inputtoken[key]);
+    }
+          
+    let result = await fetch('http://localhost:8080/logout',{
+        method: 'POST', 
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        body: urlEncodedinputtoken.toString()
+       })
+
+    let data = await result.json()
+    console.log(data)
+
+    const {status , message} = data
+
+    if(status){
+      toast(`${message}`, {
+          position: "top-right",
+       })
+
+       setTimeout(() => {
+        window.location.href = `http://localhost:3000/`;
+       }, 1000);
+
+    }
+    else{
+      toast.error(message, {
+              position: "bottom-left",
+      });
+    }
   }
 
   let menuclass = "menu"
@@ -51,8 +93,11 @@ export default function Menu(){
           <p className="username" onClick={() => {
             handlemenu(6)
             handledropdown(isdropdown)
-          }}>Demo</p>
+          }}>{username}</p>
         </div>
+        {isdropdown? <div className="logout" style={{marginLeft: "1rem"}}>
+          <button onClick={handlelogout} style={{background :"white",textDecoration: "none",fontSize: "0.8rem"}}>Logout</button>
+        </div> : <></>}
       </div>
     </div>
   );

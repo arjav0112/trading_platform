@@ -2,7 +2,6 @@ const Watchlist = require("../models/watchlist")
 const Holding = require("../models/holdings")
 const Order = require("../models/orders")
 const Exorder = require("../models/ExecutedOrder")
-const data = require("../data/data")
 
 module.exports.watchlist = async (req,res)=>{
     // let newlist;
@@ -97,9 +96,17 @@ module.exports.cancelled = async (req,res)=>{
     let id = req.body._id
     // console.log(id)
     await Order.deleteOne({_id: id})
-    let cancelledOrder = new Exorder({name : req.body.name, qty : req.body.qty, price : req.body.price, mode: req.body.mode,status: "cancelled"})
-    await cancelledOrder.save()
-    res.send(true)
+    let checkOrder = await Exorder.find({name: req.body.name,qty: req.body.qty, price:  req.body.price })
+    
+    if(checkOrder.length > 0){
+        res.send(true)
+    }
+    else{
+        let cancelledOrder = new Exorder({name : req.body.name, qty : req.body.qty, price : req.body.price, mode: req.body.mode,status: "cancelled"})
+        await cancelledOrder.save()
+        res.send(true)
+
+    }
 }
 
 module.exports.rejected = async (req,res)=>{

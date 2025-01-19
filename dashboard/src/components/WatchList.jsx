@@ -34,10 +34,11 @@ export default function WatchList({sendbasedata}){
   return (
     <div className="watchlist-container">
       <div className="search-container">
-        <div
-        
+      <input
+          type="text"
           name="search"
           id="search"
+          placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
           className="search"
         />
         <span className="counts"> {watchlist.length} / 50</span>

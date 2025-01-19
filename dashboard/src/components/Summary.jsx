@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Summary(){
+export default function Summary({username}){
   return (
     <>
       <div className="username">
-        <h6>Hi, Demo!</h6>
+        <h6>Hi,{username}!</h6>
         <hr className="divider" />
       </div>
 

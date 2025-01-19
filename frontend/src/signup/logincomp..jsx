@@ -4,12 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import signup from "../assets/signup.png"
 
-export default function Signcomp(){
-    
+export default function Logincomp(){
+    const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
       email: "",
       password: "",
-      username: "",
     });
     const { email, password, username } = inputValue;
     const handleOnChange = (e) => {
@@ -37,7 +36,7 @@ export default function Signcomp(){
                 urlEncodedinputvalue.append(key, inputValue[key]);
             }
             
-            let result = await fetch('http://localhost:8080/signup',{
+            let result = await fetch('http://localhost:8080/login',{
                 method: 'POST', 
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'
@@ -48,7 +47,7 @@ export default function Signcomp(){
              let ans = await result.json()
     
           console.log(ans)
-          const { success,token, message } = ans;
+          const { success, message , token } = ans;
           if (success) {
             handleSuccess(message);
             setTimeout(() => {
@@ -64,7 +63,6 @@ export default function Signcomp(){
           ...inputValue,
           email: "",
           password: "",
-          username: "",
         });
       };
   
@@ -79,17 +77,13 @@ export default function Signcomp(){
 
                 </div>
                 <div className="sign-info">
-                    <h3 style={{fontWeight: 600}}>Sign Up Now</h3>
+                    <h3 style={{fontWeight: 600}}>Login To your Account</h3>
                     <p style={{opacity: "0.7"}}>Or Track Your Application</p>
 
                     <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address:</label>
                         <input type="email" name="email" className="form-control" id="email" value={email} onChange={handleOnChange} />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="username" className="form-label">username: </label>
-                        <input className="form-control" name="username" id="username" value={username} onChange={handleOnChange} />
                     </div>
 
                     <div className="mb-3">
@@ -99,11 +93,11 @@ export default function Signcomp(){
 
                         <button className="btn btn-primary"  style={{paddingRight: "20px", paddingLeft: "20px"}}>Continue</button>
                     </form>
-                    <p style={{opacity: "0.7"}}>if your account exists then <Link to="/login">click here</Link> </p>
+                    <p style={{opacity: "0.7"}}>if your account does'nt exists then <Link to="/signup">click</Link> </p>
                   <ToastContainer />
                 </div>
             </div>
-                <div className="policy-info" style={{textAlign: "center",marginTop: "3rem"}}>
+                <div className="policy-info" style={{textAlign: "center",marginTop: "1rem"}}>
                     <p style={{opacity: "0.7",fontSize: "0.8rem"}}>I authorise Zerodha to contact me even if my number is registered on DND. I authorise Zerodha to fetch my KYC information from the C-KYC registry with my PAN.</p>
                     <p style={{opacity: "0.7",fontSize: "0.8rem",marginTop:"-15px"}}>Please visit this article to know more. </p>
                     <p style={{opacity: "0.7",fontSize: "0.8rem",marginTop:"1.5rem"}}>If you are looking to open a HUF, Corporate, Partnership, or NRI account, you have to use the offline forms. For help, click here.</p>

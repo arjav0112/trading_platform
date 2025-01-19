@@ -2,7 +2,7 @@ import React from "react";
 
 import Menu from "./Menu";
 
-export default function TopBar(){
+export default function TopBar({username,token}){
   return (
     <div className="topbar-container">
       <div className="indices-container">
@@ -18,7 +18,7 @@ export default function TopBar(){
         </div>
       </div>
 
-      <Menu />
+      <Menu username={username} token={token}/>
     </div>
   );
 };

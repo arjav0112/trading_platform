@@ -8,6 +8,7 @@ import About from './about/about';
 import Pricing from './pricing/pricing';
 import Support from './support/support';
 import Signup from './signup/signup';
+import Login from './signup/Login';
 import Products from './products/products';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/support" element={<Support />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
       </Routes>
     </BrowserRouter>
