@@ -12,10 +12,10 @@ router.route("/watchlist")
 .get(wrapAsync(dashcontroller.watchlist))
 
 router.route("/position")
-.get(wrapAsync(dashcontroller.position))
+.post(wrapAsync(dashcontroller.position))
 
 router.route("/holding")
-.get(wrapAsync(dashcontroller.holding))
+.post(wrapAsync(dashcontroller.holding))
 
 router.route("/newOrder")
 .post(wrapAsync(dashcontroller.newOrder))
@@ -27,7 +27,7 @@ router.route("/fetchdata")
 .post(wrapAsync(dashcontroller.fetchdata))
 
 router.route("/orders")
-.get(wrapAsync(dashcontroller.orders))
+.post(wrapAsync(dashcontroller.orders))
 
 router.route("/resolved")
 .post(wrapAsync(dashcontroller.resolved))
@@ -39,6 +39,9 @@ router.route("/rejected")
 .post(wrapAsync(dashcontroller.rejected))
 
 router.route("/exorders")
-.get(wrapAsync(dashcontroller.exorders))
+.post(wrapAsync(dashcontroller.exorders))
+
+//  router.route("/initdata")
+//  .post(wrapAsync(dashcontroller.initholding))
 
 module.exports= router;

@@ -16,7 +16,7 @@ import WatchList from "./WatchList";
 import BuyComp from "./BuyComp";
 import SellComp from "./SellComp";
 
-export default function Dashboard({username}){
+export default function Dashboard({username,token}){
 
   const [buyStock,setbuyStock] = useState(false)
   const [sellStock,setsellStock] = useState(false)
@@ -49,16 +49,16 @@ export default function Dashboard({username}){
     <div className="dashboard-container">
       {/* <GeneralContextProvider> */}
         <WatchList sendbasedata={sendbasedata}/>
-        {buyStock && <BuyComp baseData={baseData} sendbasedata={sendbasedata}/>}
-        {sellStock && <SellComp baseData={baseData} sendbasedata={sendbasedata}/>}
+        {buyStock && <BuyComp baseData={baseData} sendbasedata={sendbasedata} token={token}/>}
+        {sellStock && <SellComp baseData={baseData} sendbasedata={sendbasedata} token={token}/>}
 
       {/* </GeneralContextProvider> */}
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Summary username={username}/>} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/holdings" element={<Holdings />} />
-          <Route path="/positions" element={<Positions />} />
+          <Route path="/orders" element={<Orders token={token}/>} />
+          <Route path="/holdings" element={<Holdings token={token}/>} />
+          <Route path="/positions" element={<Positions token={token} />} />
           <Route path="/funds" element={<Funds />} />
           <Route path="/apps" element={<Apps />} />
         </Routes>

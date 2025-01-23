@@ -27,12 +27,16 @@ const positionSchema  = new Schema({
         required: true,
     },
     day : {
-        type: Boolean,
+        type: String,
         required: true,
     },
     isLoss : {
         type: Boolean,
         required: true,
+    },
+    owner : {
+        type: Schema.Types.ObjectId,
+        ref: "User",
     },
 });
 

@@ -2,24 +2,42 @@ import React,{useState , useEffect} from "react";
 import { holdings } from "../data/data";
 
 
-export default function Holdings(){
+export default function Holdings({token}){
   let [totalcurrval,settotalcurrval] = useState(0);
   let [totalprofit,settotalprofit] = useState(0);
   let [holdings,setholdings] = useState(null)
   let [loading,setloading] = useState(true)
   let [error,seterror] = useState(null)
-  
+  const [inputtoken, setinputtoken] = useState({
+        token: `${token}`
+      })
+
     useEffect(()=>{
       
       const fetchdata = async ()=>{
       try{
-      let response = await fetch("http://localhost:8080/dashboard/holding")
+        const urlEncodedinputtoken = new URLSearchParams();
+          for (let key in inputtoken) {
+              urlEncodedinputtoken.append(key, inputtoken[key]);
+          }
+      let response = await fetch("http://localhost:8080/dashboard/holding",{
+          method : 'POST',
+          headers: {
+          'content-type': 'application/x-www-form-urlencoded'
+          },
+          body: urlEncodedinputtoken.toString()
+      })
       console.log(response);
       if(!response.ok){
         throw err;
       }
       const result = await response.json()
-      setholdings(result)
+      if(result){
+        setholdings(result)
+      }
+      else{
+        throw err
+      }
       } catch(err){
         seterror(err.message)
       }   finally {

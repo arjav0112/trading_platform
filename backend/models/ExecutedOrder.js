@@ -21,7 +21,11 @@ const ExorderSchema  = new Schema({
     status : {
         type : String,
         required :true,
-    }
+    },
+    owner : {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
 });
 
 module.exports = mongoose.model("Exorder",ExorderSchema);

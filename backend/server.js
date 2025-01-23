@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express")
 const app = express()
 const dashrouter = require("./router/dashrouter")
@@ -6,6 +7,7 @@ const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const mongoose = require('mongoose');
 const ExpressError = require("./utils/ExpressError")
+const port = process.env.PORT
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
@@ -56,6 +58,6 @@ app.use(cookieParser());
 //   // res.status(statusCode).send({err});
 // });
 
-app.listen("8080",()=>{
+app.listen(port,()=>{
     console.log("server is listening")
 })

@@ -26,6 +26,10 @@ const holdingSchema  = new Schema({
         type: String,
         required: true,
     },
+    owner : {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
 });
 
 module.exports = mongoose.model("Holding",holdingSchema);
