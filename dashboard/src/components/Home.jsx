@@ -57,7 +57,7 @@ export default function Home(){
   return (
     <>
       <TopBar username={username} token={token}/>
-      <Dashboard username={username}/>
+      <Dashboard username={username} token={token}/>
     </>
   );
 };

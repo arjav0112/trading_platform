@@ -1,18 +1,34 @@
 import React from "react";
 import { useState , useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
-export default function Orders(){
+export default function Orders({token}){
   let [orders,setorders] = useState(null)
+  const navigate = useNavigate();
+
+
   let [exorders,setexorders] = useState(null)
     let [loading,setloading] = useState(true)
     let [error,seterror] = useState(null)
+  const [inputtoken, setinputtoken] = useState({
+          token: `${token}`
+        })
   
     useEffect(()=>{
       // changebuyStock(0);
       const fetchdata = async ()=>{
       try{
-      let response = await fetch("http://localhost:8080/dashboard/orders")
+        const urlEncodedinputtoken = new URLSearchParams();
+            for (let key in inputtoken) {
+                urlEncodedinputtoken.append(key, inputtoken[key]);
+            }
+      let response = await fetch("http://localhost:8080/dashboard/orders",{
+        method : 'POST',
+        headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+        },
+        body: urlEncodedinputtoken.toString()
+    })
       // console.log(response);
       if(!response.ok){
         throw err;
@@ -21,7 +37,13 @@ export default function Orders(){
       // console.log(result)
       setorders(result)
 
-      let response1 = await fetch("http://localhost:8080/dashboard/exorders")
+      let response1 = await fetch("http://localhost:8080/dashboard/exorders",{
+        method : 'POST',
+        headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+        },
+        body: urlEncodedinputtoken.toString()
+    })
       // console.log(response);
       if(!response1.ok){
         throw err;
@@ -57,7 +79,11 @@ export default function Orders(){
         })
 
        let ans = await result.json()
-       console.log(ans)
+       if(ans){
+        navigate('/')
+
+       }
+      //  console.log(ans)
 
 
     }
@@ -91,7 +117,7 @@ export default function Orders(){
           {orders.map((stock,index) => {
 
             let buyclass = stock.mode == "BUY" ? "buyclass" : "sellclass"
-
+            stock.token = token
             
             return(
             <tbody key={index}>

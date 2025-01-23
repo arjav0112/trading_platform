@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./BuyComp.css";
 
-export default function SellComp({ baseData , sendbasedata }){
+export default function SellComp({ baseData , sendbasedata,token }){
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(baseData.price);
   // const [sellData, setsellData] = useState({})
@@ -10,7 +10,8 @@ export default function SellComp({ baseData , sendbasedata }){
     name : baseData.name,
     qty : stockQuantity,
     price : stockPrice,
-    mode : "SELL"
+    mode : "SELL",
+    token:token,
   }
 
  
@@ -42,7 +43,8 @@ export default function SellComp({ baseData , sendbasedata }){
                 name : ans.name,
                 qty : ans.qty,
                 price : ans.price,
-                mode : "SELL"
+                mode : "SELL",
+                token : token
               }
               // console.log(sellOrder)
               const urlEncodedsellOrder = new URLSearchParams();

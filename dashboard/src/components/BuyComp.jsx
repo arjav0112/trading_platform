@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./BuyComp.css";
 
-export default function BuyComp({ baseData , sendbasedata }){
+export default function BuyComp({ baseData , sendbasedata,token }){
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(baseData.price);
 
@@ -10,7 +10,8 @@ export default function BuyComp({ baseData , sendbasedata }){
     name : baseData.name,
     qty : stockQuantity,
     price : stockPrice,
-    mode : "BUY"
+    mode : "BUY",
+    token: token,
   }
 
   const handleBuyClick = async () => {
