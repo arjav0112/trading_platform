@@ -16,13 +16,13 @@ export default function Comp4(){
                     <p style={{margin: "15px 0 16px 0" , opacity: "0.7"}}>
                     Varsity, the largest online stock market education book in the world covering everything from the basics to advanced trading
                     </p>
-                    <a className="anchor">Varsity &rarr;</a>
+                    <NavLink className="anchor" to='products'>Varsity &rarr;</NavLink>
                 </div>
                 <div className="subInfo6">
                     <p style={{margin: "30px 0 15px 0" , opacity: "0.7"}}>
                     TradingQ&A, the most active trading and investment community in India for all your market related queries.
                     </p>
-                    <a className="anchor">TradingQ&A &rarr;</a>
+                    <NavLink className="anchor" to='support'>TradingQ&A &rarr;</NavLink>
                 </div>
 
             </div>

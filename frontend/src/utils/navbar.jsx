@@ -7,7 +7,7 @@ export default function Navbar(){
         <>
             <nav style={{height: "67px", borderBottom: "0.1px solid grey" }} className="navbar sticky-top navbar-expand-lg">
                 <div className="container-fluid">
-                    <a style={{marginLeft: "13%"}} className="navbar-brand" href="#"><img style={{width: "130px",height: "1.15rem"}} src={logo} alt="logo" /></a>
+                    <a style={{marginLeft: "13%"}} className="navbar-brand" href="/"><img style={{width: "130px",height: "1.15rem"}} src={logo} alt="logo" /></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>

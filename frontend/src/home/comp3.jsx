@@ -33,7 +33,7 @@ export default function Comp3(){
 
         </div>
         <div className="pricingAnchor">
-            <a href="#" className="anchor">See pricing &rarr;</a>
+            <a href="/pricing" className="anchor">See pricing &rarr;</a>
         </div>
 
         </div>

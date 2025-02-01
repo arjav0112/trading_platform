@@ -29,8 +29,8 @@ export default function Comp2(){
                 <div className="imgSection">
                     <img src={ecosystem} alt="ecosystem"></img>
                     <div className="tags">
-                        <a className="anchor" href="#">Explore Your Product &rarr;</a>
-                        <a className="anchor" href="#">Try Kite Demo &rarr;</a>
+                        <a className="anchor" href="/products">Explore Your Product &rarr;</a>
+                        <a className="anchor" href="/signup">Try Kite Demo &rarr;</a>
                     </div>
                     
                 </div>

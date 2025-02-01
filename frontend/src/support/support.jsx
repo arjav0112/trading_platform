@@ -1,11 +1,14 @@
 import Footer from "../utils/footer";
 import Navbar from "../utils/navbar";
+import CreateTicket from "./Createticket";
+import Hero from "./Hero";
 
 export default function Support(){
     return (
         <>
             <Navbar />
-                <h1>Support</h1>  
+                <Hero />
+                <CreateTicket />  
             <Footer />
         
         </>

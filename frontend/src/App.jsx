@@ -4,12 +4,13 @@ import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './home/Home'
-import About from './about/about';
+import About from './about/About';
 import Pricing from './pricing/pricing';
 import Support from './support/support';
 import Signup from './signup/signup';
 import Login from './signup/Login';
 import Products from './products/products';
+import NotFound from './Notfound';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
     
