@@ -22,7 +22,7 @@ async function main() {
 
 app.use(
 cors({
-  origin: ["http://localhost:3001","http://localhost:3000"],
+  origin: ["https://kitedashboard-p05c.onrender.com","https://tradefrontend-80lo.onrender.com"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }))

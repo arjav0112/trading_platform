@@ -51,7 +51,7 @@ export default function Logincomp(){
           if (success) {
             handleSuccess(message);
             setTimeout(() => {
-                window.location.href = `http://localhost:3001?token=${token}`;
+                window.location.href = `https://kitedashboard-p05c.onrender.com?token=${token}`;
             }, 1000);
           } else {
             handleError(message);

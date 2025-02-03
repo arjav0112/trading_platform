@@ -44,7 +44,7 @@ export default function Menu({username,token}){
        })
 
        setTimeout(() => {
-        window.location.href = `http://localhost:3000/`;
+        window.location.href = `https://tradefrontend-80lo.onrender.com/`;
        }, 1000);
 
     }

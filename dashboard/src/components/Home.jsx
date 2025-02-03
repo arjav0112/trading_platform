@@ -19,7 +19,7 @@ export default function Home(){
     useEffect(() => {
       const verifyCookie = async () => {
         if (!token) {
-          window.location.href = "http://localhost:3000/login";
+          window.location.href = "https://tradefrontend-80lo.onrender.com/login";
           // console.log(cookies.token)
         }
        
@@ -49,7 +49,7 @@ export default function Home(){
           ? toast(`Hello ${user}`, {
               position: "top-right",
             })
-          : (window.location.href = "http://localhost:3000/login");
+          : (window.location.href = "https://tradefrontend-80lo.onrender.com/login");
       };
       verifyCookie();
     }, [cookies, removeCookie]);
