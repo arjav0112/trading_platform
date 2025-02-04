@@ -9,14 +9,15 @@ const jwt = require("jsonwebtoken");
 
 module.exports.watchlist = async (req,res)=>{
     // let newlist;
-    // console.log(data);
-    // for(let val in data){
+    // console.log(initdata);
+    // for(let val in initdata){
 
-    //     newlist = await new Watchlist({name: data[val].name,price: data[val].price, percent : data[val].percent, isDown: data[val].isDown})
+    //     newlist = await new Watchlist({name: initdata[val].name,price: initdata[val].price, percent : initdata[val].percent, isDown: initdata[val].isDown})
     //     newlist.save()
     // }
     let newdata = await Watchlist.find({})
     res.send(newdata)
+    // res.send("data saved")
 }
 
 module.exports.newOrder = async (req,res) =>{

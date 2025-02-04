@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser")
 const mongoose = require('mongoose');
 const ExpressError = require("./utils/ExpressError")
 const port = process.env.PORT
+const MongoUrl = process.env.DBURL
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
@@ -17,7 +18,7 @@ main()
 .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/trade');
+  await mongoose.connect(MongoUrl);
 }
 
 app.use(
