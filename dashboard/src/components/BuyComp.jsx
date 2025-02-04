@@ -22,7 +22,7 @@ export default function BuyComp({ baseData , sendbasedata,token }){
                 urlEncodednewOrder.append(key, newOrder[key]);
             }
             
-            let result = await fetch('http://localhost:8080/dashboard/newOrder',{
+            let result = await fetch('https://tradebackend-w2rv.onrender.com/dashboard/newOrder',{
                 method: 'POST', 
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'
@@ -33,7 +33,7 @@ export default function BuyComp({ baseData , sendbasedata,token }){
              let ans = await result.json()
              sendbasedata({data: "", mode: 3})
              if(ans){
-              let response = await fetch('http://localhost:8080/dashboard/resolved',{
+              let response = await fetch('https://tradebackend-w2rv.onrender.com/dashboard/resolved',{
                 method: 'POST', 
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'

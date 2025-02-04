@@ -36,7 +36,7 @@ export default function Logincomp(){
                 urlEncodedinputvalue.append(key, inputValue[key]);
             }
             
-            let result = await fetch('http://localhost:8080/login',{
+            let result = await fetch('https://tradebackend-w2rv.onrender.com/login',{
                 method: 'POST', 
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'

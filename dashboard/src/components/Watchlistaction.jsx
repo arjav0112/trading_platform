@@ -16,7 +16,7 @@ export default function Watchlistactions({uid,sendbasedata}){
                 urlEncodedData.append(key, jsondata[key]);
             }
             
-            let response = await fetch('http://localhost:8080/dashboard/fetchdata',{
+            let response = await fetch('https://tradebackend-w2rv.onrender.com/dashboard/fetchdata',{
                 method: 'POST',
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'
@@ -48,7 +48,7 @@ export default function Watchlistactions({uid,sendbasedata}){
                 urlEncodedData.append(key, jsondata[key]);
             }
             
-            let response = await fetch('http://localhost:8080/dashboard/fetchdata',{
+            let response = await fetch('https://tradebackend-w2rv.onrender.com/dashboard/fetchdata',{
                 method: 'POST',
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'

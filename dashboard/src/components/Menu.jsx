@@ -25,7 +25,7 @@ export default function Menu({username,token}){
         urlEncodedinputtoken.append(key, inputtoken[key]);
     }
           
-    let result = await fetch('http://localhost:8080/logout',{
+    let result = await fetch('https://tradebackend-w2rv.onrender.com/logout',{
         method: 'POST', 
         headers: {
           'content-type': 'application/x-www-form-urlencoded'

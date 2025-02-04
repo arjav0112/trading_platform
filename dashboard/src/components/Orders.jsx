@@ -22,7 +22,7 @@ export default function Orders({token}){
             for (let key in inputtoken) {
                 urlEncodedinputtoken.append(key, inputtoken[key]);
             }
-      let response = await fetch("http://localhost:8080/dashboard/orders",{
+      let response = await fetch("https://tradebackend-w2rv.onrender.com/dashboard/orders",{
         method : 'POST',
         headers: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -37,7 +37,7 @@ export default function Orders({token}){
       // console.log(result)
       setorders(result)
 
-      let response1 = await fetch("http://localhost:8080/dashboard/exorders",{
+      let response1 = await fetch("https://tradebackend-w2rv.onrender.com/dashboard/exorders",{
         method : 'POST',
         headers: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -70,7 +70,7 @@ export default function Orders({token}){
         urlEncodedcancelOrder.append(key, stock[key]);
       }
       
-      let result = await fetch('http://localhost:8080/dashboard/cancelled',{
+      let result = await fetch('https://tradebackend-w2rv.onrender.com/dashboard/cancelled',{
           method: 'POST', 
           headers: {
               'content-type': 'application/x-www-form-urlencoded'

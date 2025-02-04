@@ -30,7 +30,7 @@ export default function Home(){
             urlEncodedinputtoken.append(key, inputtoken[key]);
         }
               
-              let result = await fetch('http://localhost:8080/',{
+              let result = await fetch('https://tradebackend-w2rv.onrender.com/',{
                   method: 'POST', 
                   headers: {
                       'content-type': 'application/x-www-form-urlencoded'

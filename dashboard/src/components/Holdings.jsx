@@ -20,7 +20,7 @@ export default function Holdings({token}){
           for (let key in inputtoken) {
               urlEncodedinputtoken.append(key, inputtoken[key]);
           }
-      let response = await fetch("http://localhost:8080/dashboard/holding",{
+      let response = await fetch("https://tradebackend-w2rv.onrender.com/dashboard/holding",{
           method : 'POST',
           headers: {
           'content-type': 'application/x-www-form-urlencoded'

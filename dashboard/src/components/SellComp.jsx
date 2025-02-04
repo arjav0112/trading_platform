@@ -24,7 +24,7 @@ export default function SellComp({ baseData , sendbasedata,token }){
                 urlEncodednewOrder.append(key, newOrder[key]);
             }
             
-            let result = await fetch('http://localhost:8080/dashboard/newOrder',{
+            let result = await fetch('https://tradebackend-w2rv.onrender.com/dashboard/newOrder',{
                 method: 'POST', 
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded'
@@ -52,7 +52,7 @@ export default function SellComp({ baseData , sendbasedata,token }){
                  urlEncodedsellOrder.append(key, sellOrder[key]);
               }
 
-              let response = await fetch('http://localhost:8080/dashboard/resolved',{
+              let response = await fetch('https://tradebackend-w2rv.onrender.com/dashboard/resolved',{
                 method: 'POST', 
                 headers: {
                   'content-type': 'application/x-www-form-urlencoded'
@@ -64,7 +64,7 @@ export default function SellComp({ baseData , sendbasedata,token }){
             //  console.log(sellOrder)
             }
             else{
-             let response = await fetch('http://localhost:8080/dashboard/rejected',{
+             let response = await fetch('https://tradebackend-w2rv.onrender.com/dashboard/rejected',{
                method: 'POST', 
                headers: {
                  'content-type': 'application/x-www-form-urlencoded'

@@ -12,7 +12,7 @@ export default function WatchList({sendbasedata}){
     // changebuyStock(0);
     const fetchdata = async ()=>{
     try{
-    let response = await fetch("http://localhost:8080/dashboard/watchlist")
+    let response = await fetch("https://tradebackend-w2rv.onrender.com/dashboard/watchlist")
     console.log(response);
     if(!response.ok){
       throw err;
