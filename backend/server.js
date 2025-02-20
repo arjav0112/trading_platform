@@ -7,7 +7,7 @@ const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const mongoose = require('mongoose');
 const ExpressError = require("./utils/ExpressError")
-const port = process.env.PORT
+const port = process.env.PORT || 5000
 const MongoUrl = process.env.DBURL
 
 app.use(express.urlencoded({extended:true}));
